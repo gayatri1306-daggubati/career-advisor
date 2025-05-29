@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Career Advisor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffffd9;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px #eee;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #444;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            resize: vertical;
+            box-shadow: inset 0 1px 5px #eee;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 12px 25px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .advice {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 6px solid #007bff;
+            box-shadow: 0 0 8px rgba(0,0,0,0.05);
+        }
+
+        .advice h2 {
+            color: #007bff;
+            margin-top: 0;
+        }
+
+        .advice-content p {
+            margin: 6px 0;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"><CENTER>
+        <h2>Welcome To</h2>
+        <h1><strong>GAYATRI's CAREER ADVISOR</strong></h1></CENTER>
+
+        <form method="post" action="/">
+            <label for="prompt">QUERY:</label><br />
+            <textarea id="prompt" name="prompt" placeholder="Enter Your Query ">{{ request.form.prompt or '' }}</textarea><br />
+           <center><button type="submit">Get Advice</button></center>
+        </form>
+
+        {% if advice %}
+        <div class="advice">
+            <h2>📘 Advice:</h2>
+            <div class="advice-content">
+                {% for line in advice.split('\n') %}
+                    {% if line.strip() != "" %}
+                        {% if line.startswith("*") %}
+                            <p class="highlight">{{ line }}</p>
+                        {% else %}
+                            <p>{{ line }}</p>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
