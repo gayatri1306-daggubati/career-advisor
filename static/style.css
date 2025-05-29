@@ -1,0 +1,41 @@
+body {
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  font-family: Arial;
+  color: white;
+  text-align: center;
+}
+
+.box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #000;
+}
+
+input, textarea {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.response {
+  margin-top: 20px;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+}
